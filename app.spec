@@ -2,13 +2,12 @@
 
 
 a = Analysis(
-    ['src\\dicomsorter\\app.py'],
+    ['src/backgroundannotator/app.py'],
     pathex=[],
     binaries=[],
     datas=[
         # ('now_as_seen_from_spec_file', 'when_in_exe'),
-        ('src/dicomsorter/assets/dora.ico', 'assets'),
-        ('src/dicomsorter/assets/settings.toml', 'assets'),
+        ('src/backgroundannotator/assets/bob.ico', 'assets'),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -26,7 +25,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='DORA',
+    name='Background Annotator',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -39,5 +38,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='src\\dicomsorter\\assets\\dora.ico',
+    icon='src/backgroundannotator/assets/bob.ico',
 )
