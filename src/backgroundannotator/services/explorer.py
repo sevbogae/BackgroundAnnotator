@@ -44,6 +44,22 @@ def select_files_from_explorer(filetypes: list[tuple[str, str]], multiple: bool 
     return tuple(Path(path) for path in file_paths if path)  # Filter out empty strings (if user canceled).
 
 
+def save_file_via_explorer() -> Path | None:
+    """Open a file dialog to save a file.
+
+    Returns
+    -------
+    Path | None
+        The path where the file is to be saved. If the user cancels the dialog, returns None.
+    """
+    file_path: str | Literal[""] = filedialog.asksaveasfilename(
+        title="Save Image",
+        defaultextension=".png",
+    )
+
+    return Path(file_path) if file_path else None  # Return None if user canceled.
+
+
 def open_website(url: str) -> None:
     """Open a website in the default web browser.
 
