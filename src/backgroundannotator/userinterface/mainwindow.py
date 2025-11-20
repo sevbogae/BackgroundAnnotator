@@ -1,12 +1,12 @@
 import tkinter as tk
 from pathlib import Path
 from tkinter import ttk, messagebox, scrolledtext, colorchooser
-from importlib import metadata
 from PIL import Image, ImageTk
 
 from backgroundannotator.services.background import (create_default_background, resize_image, add_text_to_image,
                                                      set_background)
 from backgroundannotator.services.explorer import get_asset, select_files_from_explorer, save_file_via_explorer
+from backgroundannotator import __version__, __title__
 
 
 class MainWindow(tk.Tk):
@@ -14,8 +14,8 @@ class MainWindow(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
 
-        self._version = metadata.version("backgroundannotator")
-        self._title = metadata.metadata("backgroundannotator").get("Summary", "BOB: Brain On Background")
+        self._version = __version__
+        self._title = __title__
 
         self._original_image: Image.Image | None = create_default_background()
         self._image_with_text: Image.Image | None = self._original_image.copy()
