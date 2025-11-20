@@ -8,6 +8,8 @@ a = Analysis(
     datas=[
         # ('now_as_seen_from_spec_file', 'when_in_exe'),
         ('src/backgroundannotator/assets/bob.ico', 'assets'),
+        ('src/backgroundannotator/assets/font_ugent.ttf', 'assets'),
+        ('src/backgroundannotator/assets/logo_ugent.png', 'assets'),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -25,7 +27,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Background Annotator',
+    name='BOB',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
