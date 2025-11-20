@@ -68,7 +68,6 @@ class MainWindow(tk.Tk):
 
     def _create_file_selection_frame(self) -> None:
         """Create the file selection frame."""
-        # TODO: Move this to the File menu.
         frame: ttk.Frame = ttk.Frame(master=self, padding="10")
         frame.pack(fill="x")
         frame.columnconfigure(index=1, weight=1)
@@ -211,14 +210,14 @@ class MainWindow(tk.Tk):
         # Draw it on the preview canvas (scaled).
         self._update_preview_image()
 
-    def _on_notes_key_release(self, event: tk.Event) -> None:
+    def _on_notes_key_release(self, _: tk.Event) -> None:
         """Handle typing in the notes box with a short delay before updating."""
         # Cancel any scheduled update to prevent too frequent redraws
         if self._notes_update_after_id is not None:
             self.after_cancel(self._notes_update_after_id)
 
         # Schedule an update 300 ms after last key release
-        self._notes_update_after_id = self.after(300, self._update_preview_image)
+        self._notes_update_after_id = self.after(300, lambda _: self._update_preview_image(), ())
 
     def _update_preview_image(self) -> None:
         """Update the preview image on the canvas."""
@@ -307,7 +306,10 @@ class MainWindow(tk.Tk):
         """Show the dialog 'Help'."""
         messagebox.showinfo(title="Help",
                             message=f"BOB, which stands for Brain On Background, is an application to put notes onto your desktop background.\n\n"
-                                    f""
+                                    f"First, select an image file from your computer or use the default background (UGent blue with UGent logo). This will be the desktop image.\n\n"
+                                    f"In the notes box, type the text you want to appear on your desktop background. You can adjust the position, size, and color of the text using the options provided.\n\n"
+                                    f"The preview area shows how your desktop background will look with the notes overlaid.\n\n"
+                                    f"Once you're satisfied with the appearance, you can either save the annotated image to your computer or set it directly as your desktop background using the provided buttons.\n\n"
                                     f"For the source code, visit GitHub: https://github.com/sevbogae/BackgroundAnnotator.git"
                             )
 
